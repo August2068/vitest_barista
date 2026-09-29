@@ -14,8 +14,13 @@ describe("Coffee", () => {
   it("ajoute un ingrédient à la recette", () => {
     const coffee = new Coffee("Cappuccino", 4);
     coffee.addIngredient("coffee", 4);
-    expect(coffee.ingredients[0].name).toBe("coffee");
-    expect(coffee.ingredients[0].quantity).toBe(4);
+    // expect(coffee.ingredients[0].name).toBe("coffee");
+    // expect(coffee.ingredients[0].quantity).toBe(4);
+    // expect(coffee.ingredients[0]).toMatchObject({
+    //   name: "coffee",
+    //   quantity: 4,
+    // });
+    expect(coffee.ingredients).toContainEqual({ name: "coffee", quantity: 4 });
   });
 });
 
@@ -44,8 +49,13 @@ describe("Barista", () => {
     const barista = new Barista("SONIC");
     barista.addCoffee(new Coffee("Cappuccino", 4));
     expect(barista.coffees.length).toBe(1);
-    expect(barista.coffees[0].name).toBe("Cappuccino");
-    expect(barista.coffees[0].price).toBe(4);
+    // expect(barista.coffees[0].name).toBe("Cappuccino");
+    // expect(barista.coffees[0].price).toBe(4);
+    expect(barista.coffees).toContainEqual({
+      ingredients: [],
+      name: "Cappuccino",
+      price: 4,
+    });
   });
 
   it("retourne undefined lorsqu'un café n'existe pas", () => {
@@ -58,7 +68,8 @@ describe("Barista", () => {
     barista.addIngredient("milk", 5);
     barista.addIngredient("coffee", 7);
     barista.addIngredient("milk", 5);
-    expect(barista.ingredients[0].quantity).toBe(10);
+    // expect(barista.ingredients[0].quantity).toBe(10);
+    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 10 });
   });
 
   it("peut préparer un café lorsque tous les ingrédients sont disponibles", () => {
@@ -102,8 +113,9 @@ describe("Barista", () => {
     barista.addIngredient("milk", 5);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    expect(barista.ingredients[0].quantity).toBe(0);
-    expect(barista.ingredients[1].quantity).toBe(0);
+    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 0 });
+    // expect(barista.ingredients[0].quantity).toBe(0);
+    // expect(barista.ingredients[1].quantity).toBe(0);
   });
 
   it("ne consomme rien lorsqu'il ne peut pas préparer le café", () => {
@@ -115,8 +127,9 @@ describe("Barista", () => {
     barista.addIngredient("milk", 2);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    expect(barista.ingredients[0].quantity).toBe(2);
-    expect(barista.ingredients[1].quantity).toBe(7);
+    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 2 });
+    // expect(barista.ingredients[0].quantity).toBe(2);
+    // expect(barista.ingredients[1].quantity).toBe(7);
   });
 
   it("retourne le prix lorsqu'un café est commandé", () => {
