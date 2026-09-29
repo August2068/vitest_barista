@@ -41,6 +41,7 @@ describe("Ingredient", () => {
   it("refuse de retirer une quantité supérieure au stock", () => {
     const ingredient = new Ingredient("honey", 3);
     expect(ingredient.removeQuantity(4)).toBe(false);
+    expect(ingredient.quantity).toBe(3);
   });
 });
 
@@ -68,8 +69,8 @@ describe("Barista", () => {
     barista.addIngredient("milk", 5);
     barista.addIngredient("coffee", 7);
     barista.addIngredient("milk", 5);
-    // expect(barista.ingredients[0].quantity).toBe(10);
-    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 10 });
+    expect(barista.ingredients[0].quantity).toBe(10);
+    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 10 });
   });
 
   it("peut préparer un café lorsque tous les ingrédients sont disponibles", () => {
@@ -113,9 +114,9 @@ describe("Barista", () => {
     barista.addIngredient("milk", 5);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 0 });
-    // expect(barista.ingredients[0].quantity).toBe(0);
-    // expect(barista.ingredients[1].quantity).toBe(0);
+    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 0 });
+    expect(barista.ingredients[0].quantity).toBe(0);
+    expect(barista.ingredients[1].quantity).toBe(0);
   });
 
   it("ne consomme rien lorsqu'il ne peut pas préparer le café", () => {
@@ -127,9 +128,9 @@ describe("Barista", () => {
     barista.addIngredient("milk", 2);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 2 });
-    // expect(barista.ingredients[0].quantity).toBe(2);
-    // expect(barista.ingredients[1].quantity).toBe(7);
+    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 2 });
+    expect(barista.ingredients[0].quantity).toBe(2);
+    expect(barista.ingredients[1].quantity).toBe(7);
   });
 
   it("retourne le prix lorsqu'un café est commandé", () => {

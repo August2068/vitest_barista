@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1790607514983" clover="3.2.0">
-  <project timestamp="1790607514983" name="All files">
+<coverage generated="1790669511979" clover="3.2.0">
+  <project timestamp="1790669511979" name="All files">
     <metrics statements="51" coveredstatements="51" conditionals="12" coveredconditionals="12" methods="19" coveredmethods="19" elements="82" coveredelements="82" complexity="0" loc="51" ncloc="51" packages="1" files="1" classes="1"/>
     <file name="barista.ts" path="C:\IT\Simplon\semaine 5-8\test\barista\barista.ts">
       <metrics statements="51" coveredstatements="51" conditionals="12" coveredconditionals="12" methods="19" coveredmethods="19"/>
