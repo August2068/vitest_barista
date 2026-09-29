@@ -60,7 +60,7 @@ describe("Barista", () => {
 
   it("retourne undefined lorsqu'un café n'existe pas", () => {
     const barista = new Barista("SONIC");
-    expect(barista.getCoffee("coffee")).toBe(undefined);
+    expect(barista.getCoffee("coffee")).toBeUndefined();
   });
 
   it("Augmenter quantité d'un ingrédient déjà présent", () => {
@@ -145,7 +145,7 @@ describe("Barista", () => {
 
   it("Retourne null si le café qu'on essaye de faire n'existe pas quand on order un café", () => {
     const barista = new Barista("SONIC");
-    expect(barista.orderCoffee("Coffee")).toBe(null);
+    expect(barista.orderCoffee("Coffee")).toBeNull();
   });
 
   it("Retourne null si on ne peut pas faire un café quand on order un café", () => {
@@ -154,7 +154,7 @@ describe("Barista", () => {
     barista.addCoffee(coffee);
     coffee.addIngredient("milk", 5);
     coffee.addIngredient("coffee", 7);
-    expect(barista.orderCoffee("Cappuccino")).toBe(null);
+    expect(barista.orderCoffee("Cappuccino")).toBeNull();
   });
 });
 
