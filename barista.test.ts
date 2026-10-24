@@ -14,12 +14,6 @@ describe("Coffee", () => {
   it("ajoute un ingrédient à la recette", () => {
     const coffee = new Coffee("Cappuccino", 4);
     coffee.addIngredient("coffee", 4);
-    // expect(coffee.ingredients[0].name).toBe("coffee");
-    // expect(coffee.ingredients[0].quantity).toBe(4);
-    // expect(coffee.ingredients[0]).toMatchObject({
-    //   name: "coffee",
-    //   quantity: 4,
-    // });
     expect(coffee.ingredients).toContainEqual({ name: "coffee", quantity: 4 });
   });
 });
@@ -50,8 +44,6 @@ describe("Barista", () => {
     const barista = new Barista("SONIC");
     barista.addCoffee(new Coffee("Cappuccino", 4));
     expect(barista.coffees.length).toBe(1);
-    // expect(barista.coffees[0].name).toBe("Cappuccino");
-    // expect(barista.coffees[0].price).toBe(4);
     expect(barista.coffees).toContainEqual({
       ingredients: [],
       name: "Cappuccino",
@@ -70,7 +62,6 @@ describe("Barista", () => {
     barista.addIngredient("coffee", 7);
     barista.addIngredient("milk", 5);
     expect(barista.ingredients[0].quantity).toBe(10);
-    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 10 });
   });
 
   it("peut préparer un café lorsque tous les ingrédients sont disponibles", () => {
@@ -114,7 +105,6 @@ describe("Barista", () => {
     barista.addIngredient("milk", 5);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 0 });
     expect(barista.ingredients[0].quantity).toBe(0);
     expect(barista.ingredients[1].quantity).toBe(0);
   });
@@ -128,7 +118,6 @@ describe("Barista", () => {
     barista.addIngredient("milk", 2);
     barista.addIngredient("coffee", 7);
     barista.makeCoffee(coffee);
-    // expect(barista.ingredients).toContainEqual({ name: "milk", quantity: 2 });
     expect(barista.ingredients[0].quantity).toBe(2);
     expect(barista.ingredients[1].quantity).toBe(7);
   });
@@ -158,7 +147,3 @@ describe("Barista", () => {
     expect(barista.orderCoffee("Cappuccino")).toBeNull();
   });
 });
-
-// démarre projet avec vites
-// installe vitest
-// installe v8 pour le coverage
